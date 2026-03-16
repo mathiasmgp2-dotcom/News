@@ -781,17 +781,17 @@ html.light .divider-row::before, html.light .divider-row::after {
 
 <script>
 const QUERIES = {
-  all:       'geopolitics OR "foreign policy" OR "international relations" OR "domestic politics" OR "political crisis" OR election OR coup OR government',
-  conflict:  'war OR conflict OR military OR ceasefire OR offensive OR "armed forces" OR airstrikes OR insurgency OR militia',
-  diplomacy: 'diplomacy OR summit OR treaty OR bilateral OR "foreign minister" OR ambassador OR "peace talks" OR "state visit"',
-  sanctions: 'sanctions OR embargo OR tariffs OR "trade war" OR "export controls" OR "asset freeze" OR blacklist',
-  economy:   'IMF OR "World Bank" OR recession OR "sovereign debt" OR "currency crisis" OR "interest rates" OR "fiscal crisis"',
-  climate:   'climate OR "Paris Agreement" OR COP OR emissions OR deforestation OR "energy transition" OR drought OR flooding',
-  brics:     'BRICS OR G20 OR G7 OR "Global South" OR "developing nations" OR multilateral OR "non-aligned" OR SCO',
-  latam:     'Brazil OR Argentina OR Venezuela OR Colombia OR Mexico OR Chile OR Peru OR Bolivia OR "Latin America" OR "South America"',
-  africa:    'Africa OR Nigeria OR Ethiopia OR Sudan OR Congo OR Kenya OR Sahel OR Mali OR Somalia OR "West Africa" OR "East Africa"',
-  mideast:   '"Middle East" OR Gaza OR Israel OR Iran OR "Saudi Arabia" OR Yemen OR Syria OR Lebanon OR Iraq OR Turkey OR Egypt',
-  asia:      'China OR Taiwan OR India OR Pakistan OR Myanmar OR "North Korea" OR Indonesia OR Philippines OR "South China Sea" OR Bangladesh',
+  all:       'geopolitics OR "foreign policy" OR diplomacy OR conflict OR election OR coup',
+  conflict:  'war OR conflict OR military OR ceasefire OR airstrikes OR insurgency',
+  diplomacy: 'diplomacy OR summit OR treaty OR "foreign minister" OR "peace talks"',
+  sanctions: 'sanctions OR embargo OR tariffs OR "trade war" OR "export controls"',
+  economy:   'IMF OR recession OR "sovereign debt" OR "currency crisis" OR "World Bank"',
+  climate:   'climate OR "Paris Agreement" OR COP OR emissions OR deforestation',
+  brics:     'BRICS OR G20 OR G7 OR "Global South" OR multilateral',
+  latam:     'Brazil OR Argentina OR Venezuela OR Colombia OR Mexico OR Chile OR Peru',
+  africa:    'Nigeria OR Ethiopia OR Sudan OR Congo OR Kenya OR Sahel OR Somalia',
+  mideast:   'Gaza OR Israel OR Iran OR "Saudi Arabia" OR Yemen OR Syria OR Lebanon',
+  asia:      'China OR Taiwan OR India OR Pakistan OR Myanmar OR "North Korea"',
 };
 
 let S = { ndKey:'', wnKey:'', gnKey:'', tnKey:'', filter:'all', articles:[], loading:false };
