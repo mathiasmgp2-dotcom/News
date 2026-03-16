@@ -220,20 +220,21 @@ header {
   color: var(--text-muted);
 }
 
-.header-actions { display:flex; gap:6px; }
+.header-actions { display:flex; gap:5px; align-items:center; }
 
 .icon-btn {
-  width: 30px; height: 30px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.16);
-  background: rgba(255,255,255,0.08);
+  width: 28px; height: 28px;
+  border-radius: 9px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.07);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.65);
   cursor: pointer;
   display: flex; align-items:center; justify-content:center;
-  transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+  transition: all 0.18s cubic-bezier(0.34,1.56,0.64,1);
   position: relative; overflow: hidden;
+  flex-shrink: 0;
 }
 html.light .icon-btn {
   border-color: rgba(0,0,0,0.12);
@@ -676,19 +677,19 @@ html.light .divider-row::before, html.light .divider-row::after {
     </div>
     <div class="header-actions">
       <button class="icon-btn" id="refreshBtn" title="Refresh">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/>
           <path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/>
         </svg>
       </button>
       <button class="icon-btn" id="themeBtn" title="Toggle light/dark">
-        <svg id="themeIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg id="themeIcon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="5"/>
           <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
         </svg>
       </button>
       <button class="icon-btn" id="settingsBtn" title="Settings">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="3"/>
           <path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M12 2v2M12 20v2M2 12h2M20 12h2M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41"/>
         </svg>
@@ -736,24 +737,42 @@ html.light .divider-row::before, html.light .divider-row::after {
     </div>
     <div class="sheet-body">
       <div class="note-box">
-        Both APIs are free — no credit card needed. Keys are stored only in your browser and never leave your device.
+        All APIs are free — no credit card needed. Keys are stored only in your browser and never leave your device. Add as many as you want for more articles.
       </div>
       <div class="field-block">
         <div class="field-label-row">
           <span class="field-name">NewsData.io</span>
-          <span class="field-badge">Free · 200 req/day</span>
+          <span class="field-badge">Free · 200/day</span>
         </div>
-        <div class="field-hint">Get key at <a href="https://newsdata.io/register" target="_blank">newsdata.io/register</a></div>
+        <div class="field-hint">Register at <a href="https://newsdata.io/register" target="_blank">newsdata.io/register</a></div>
         <input class="field-input" id="nd-key" type="text" placeholder="pub_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false">
       </div>
       <div class="divider-row">and / or</div>
       <div class="field-block">
         <div class="field-label-row">
           <span class="field-name">World News API</span>
-          <span class="field-badge">Free · 1000 req/day</span>
+          <span class="field-badge">Free · 1000/day</span>
         </div>
-        <div class="field-hint">Get key at <a href="https://worldnewsapi.com/register" target="_blank">worldnewsapi.com/register</a></div>
+        <div class="field-hint">Register at <a href="https://worldnewsapi.com/register" target="_blank">worldnewsapi.com/register</a></div>
         <input class="field-input" id="wn-key" type="text" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="divider-row">and / or</div>
+      <div class="field-block">
+        <div class="field-label-row">
+          <span class="field-name">GNews</span>
+          <span class="field-badge">Free · 100/day</span>
+        </div>
+        <div class="field-hint">Register at <a href="https://gnews.io/register" target="_blank">gnews.io/register</a> — indexes Google News</div>
+        <input class="field-input" id="gn-key" type="text" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="divider-row">and / or</div>
+      <div class="field-block">
+        <div class="field-label-row">
+          <span class="field-name">TheNewsAPI</span>
+          <span class="field-badge">Free · 100/day</span>
+        </div>
+        <div class="field-hint">Register at <a href="https://www.thenewsapi.com/register" target="_blank">thenewsapi.com/register</a> — 50k+ sources</div>
+        <input class="field-input" id="tn-key" type="text" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false">
       </div>
       <button class="btn-save" id="saveBtn">Save &amp; Activate</button>
     </div>
@@ -762,32 +781,36 @@ html.light .divider-row::before, html.light .divider-row::after {
 
 <script>
 const QUERIES = {
-  all:       'geopolitics OR diplomacy OR conflict OR sanctions OR "global south" OR geopolitical',
-  conflict:  'war OR conflict OR battle OR military OR ceasefire OR offensive OR troops',
-  diplomacy: 'diplomacy OR diplomatic OR summit OR treaty OR negotiations OR envoy OR ambassador',
-  sanctions: 'sanctions OR embargo OR blacklist OR tariffs OR "trade war" OR "export controls"',
-  economy:   'IMF OR "World Bank" OR debt OR "trade deal" OR "currency crisis" OR inflation',
-  climate:   'climate OR "Paris Agreement" OR COP OR emissions OR deforestation OR "clean energy"',
-  brics:     'BRICS OR G20 OR G7 OR "global south" OR multilateral OR "non-aligned"',
-  latam:     '"Latin America" OR Brazil OR Argentina OR Venezuela OR Colombia OR Peru OR Chile',
-  africa:    'Africa OR Nigeria OR Ethiopia OR Sudan OR Congo OR Kenya OR Sahel OR "West Africa"',
-  mideast:   '"Middle East" OR Gaza OR Israel OR Iran OR "Saudi Arabia" OR Yemen OR Syria OR Lebanon',
-  asia:      'China OR Taiwan OR India OR Pakistan OR Myanmar OR "North Korea" OR "South China Sea"',
+  all:       'geopolitics OR "foreign policy" OR "international relations" OR "domestic politics" OR "political crisis" OR election OR coup OR government',
+  conflict:  'war OR conflict OR military OR ceasefire OR offensive OR "armed forces" OR airstrikes OR insurgency OR militia',
+  diplomacy: 'diplomacy OR summit OR treaty OR bilateral OR "foreign minister" OR ambassador OR "peace talks" OR "state visit"',
+  sanctions: 'sanctions OR embargo OR tariffs OR "trade war" OR "export controls" OR "asset freeze" OR blacklist',
+  economy:   'IMF OR "World Bank" OR recession OR "sovereign debt" OR "currency crisis" OR "interest rates" OR "fiscal crisis"',
+  climate:   'climate OR "Paris Agreement" OR COP OR emissions OR deforestation OR "energy transition" OR drought OR flooding',
+  brics:     'BRICS OR G20 OR G7 OR "Global South" OR "developing nations" OR multilateral OR "non-aligned" OR SCO',
+  latam:     'Brazil OR Argentina OR Venezuela OR Colombia OR Mexico OR Chile OR Peru OR Bolivia OR "Latin America" OR "South America"',
+  africa:    'Africa OR Nigeria OR Ethiopia OR Sudan OR Congo OR Kenya OR Sahel OR Mali OR Somalia OR "West Africa" OR "East Africa"',
+  mideast:   '"Middle East" OR Gaza OR Israel OR Iran OR "Saudi Arabia" OR Yemen OR Syria OR Lebanon OR Iraq OR Turkey OR Egypt',
+  asia:      'China OR Taiwan OR India OR Pakistan OR Myanmar OR "North Korea" OR Indonesia OR Philippines OR "South China Sea" OR Bangladesh',
 };
 
-let S = { ndKey:'', wnKey:'', filter:'all', articles:[], loading:false };
+let S = { ndKey:'', wnKey:'', gnKey:'', tnKey:'', filter:'all', articles:[], loading:false };
 
 function loadKeys() {
   S.ndKey = localStorage.getItem('gw_nd') || '';
   S.wnKey = localStorage.getItem('gw_wn') || '';
+  S.gnKey = localStorage.getItem('gw_gn') || '';
+  S.tnKey = localStorage.getItem('gw_tn') || '';
 }
 
 function persistKeys() {
   const nd = document.getElementById('nd-key').value.trim();
   const wn = document.getElementById('wn-key').value.trim();
-  localStorage.setItem('gw_nd', nd);
-  localStorage.setItem('gw_wn', wn);
-  S.ndKey = nd; S.wnKey = wn;
+  const gn = document.getElementById('gn-key').value.trim();
+  const tn = document.getElementById('tn-key').value.trim();
+  localStorage.setItem('gw_nd', nd); localStorage.setItem('gw_wn', wn);
+  localStorage.setItem('gw_gn', gn); localStorage.setItem('gw_tn', tn);
+  S.ndKey=nd; S.wnKey=wn; S.gnKey=gn; S.tnKey=tn;
   closeSheet(); fetchAll();
 }
 
@@ -818,13 +841,42 @@ async function fetchWorldNews(q) {
   } catch { return []; }
 }
 
+async function fetchGNews(q) {
+  if (!S.gnKey) return [];
+  try {
+    // GNews search endpoint — CORS-enabled
+    const r = await fetch(`https://gnews.io/api/v4/search?q=${encodeURIComponent(q)}&lang=en&max=10&sortby=publishedAt&token=${S.gnKey}`);
+    const d = await r.json();
+    return (d.articles||[]).map(a => ({
+      id: a.url, title: a.title||'', desc: a.description||'',
+      url: a.url, source: a.source?.name||domain(a.url),
+      time: a.publishedAt, api:'GNews',
+    }));
+  } catch { return []; }
+}
+
+async function fetchTheNewsAPI(q) {
+  if (!S.tnKey) return [];
+  try {
+    const r = await fetch(`https://api.thenewsapi.com/v1/news/all?api_token=${S.tnKey}&search=${encodeURIComponent(q)}&language=en&limit=10&sort=published_at`);
+    const d = await r.json();
+    return (d.data||[]).map(a => ({
+      id: a.uuid, title: a.title||'', desc: a.description||a.snippet||'',
+      url: a.url, source: a.source||domain(a.url),
+      time: a.published_at, api:'TheNewsAPI',
+    }));
+  } catch { return []; }
+}
+
 async function fetchAll(append=false) {
   if (S.loading) return;
-  if (!S.ndKey && !S.wnKey) { renderEmpty('keys'); return; }
+  if (!S.ndKey && !S.wnKey && !S.gnKey && !S.tnKey) { renderEmpty('keys'); return; }
   S.loading = true; setStatus('loading');
   const q = QUERIES[S.filter];
-  const [nd, wn] = await Promise.all([fetchNewsData(q), fetchWorldNews(q)]);
-  const fresh = dedup([...nd,...wn]).sort((a,b)=>+new Date(b.time)-+new Date(a.time));
+  const [nd, wn, gn, tn] = await Promise.all([
+    fetchNewsData(q), fetchWorldNews(q), fetchGNews(q), fetchTheNewsAPI(q)
+  ]);
+  const fresh = dedup([...nd,...wn,...gn,...tn]).sort((a,b)=>+new Date(b.time)-+new Date(a.time));
   S.articles = append ? dedup([...S.articles,...fresh]) : fresh;
   S.loading = false;
   if (!S.articles.length) { setStatus('error'); renderEmpty('none'); }
@@ -912,6 +964,8 @@ function relTime(str){
 function openSheet(){
   document.getElementById('nd-key').value=S.ndKey;
   document.getElementById('wn-key').value=S.wnKey;
+  document.getElementById('gn-key').value=S.gnKey;
+  document.getElementById('tn-key').value=S.tnKey;
   document.getElementById('overlay').classList.add('open');
 }
 function closeSheet(){ document.getElementById('overlay').classList.remove('open'); }
@@ -928,8 +982,8 @@ document.getElementById('filterBar').addEventListener('click', e=>{
 });
 
 /* ── THEME TOGGLE ── */
-const moonSVG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
-const sunSVG  = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`;
+const moonSVG = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+const sunSVG  = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`;
 
 let isLight = localStorage.getItem('gw_theme') === 'light';
 function applyTheme() {
@@ -948,7 +1002,7 @@ document.getElementById('themeBtn').addEventListener('click', ()=>{
 if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(()=>{});
 
 loadKeys();
-if(S.ndKey||S.wnKey) fetchAll();
+if(S.ndKey||S.wnKey||S.gnKey||S.tnKey) fetchAll();
 else { renderEmpty('keys'); openSheet(); }
 </script>
 </body>
