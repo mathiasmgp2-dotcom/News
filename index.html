@@ -270,8 +270,10 @@ html.light .skeleton-card { background:rgba(255,255,255,0.4);border-color:rgba(0
 .fx-section { margin-bottom:20px; }
 .fx-title { font-size:13px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;padding:0 4px; }
 
-.fx-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px; }
-@media(max-width:400px) { .fx-grid { grid-template-columns:repeat(2,1fr); } }
+.fx-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px; }
+@media(max-width:500px) { .fx-grid { grid-template-columns:repeat(2,1fr); } }
+@media(min-width:600px) { .fx-grid { grid-template-columns:repeat(3,1fr); } }
+@media(min-width:780px) { .fx-grid { grid-template-columns:repeat(4,1fr); } }
 
 .fx-card {
   border-radius:16px;padding:14px 16px;cursor:pointer;
@@ -280,13 +282,14 @@ html.light .skeleton-card { background:rgba(255,255,255,0.4);border-color:rgba(0
   box-shadow:0 4px 20px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.1);
   transition:all 0.2s cubic-bezier(0.34,1.56,0.64,1);
   position:relative;overflow:hidden;animation:fadeUp 0.4s cubic-bezier(0.22,1,0.36,1) both;
+  display:flex;flex-direction:column;
 }
 .fx-card::before { content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);opacity:0.7; }
 .fx-card:hover { transform:translateY(-2px) scale(1.02);background:var(--card-hover);box-shadow:0 8px 32px rgba(0,0,0,0.28); }
 html.light .fx-card { box-shadow:0 4px 20px rgba(60,100,200,0.10),inset 0 1px 0 rgba(255,255,255,0.9); }
 .fx-card.selected { border-color:rgba(59,158,255,0.5);box-shadow:0 0 0 2px rgba(59,158,255,0.2),0 8px 32px rgba(0,0,0,0.28); }
 .fx-pair { font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px; }
-.fx-rate { font-size:20px;font-weight:700;color:var(--text);line-height:1;letter-spacing:-0.5px; }
+.fx-rate { font-size:18px;font-weight:700;color:var(--text);line-height:1;letter-spacing:-0.3px;margin-bottom:2px; }
 .fx-change {
   font-size:11px;font-weight:600;margin-top:4px;display:flex;align-items:center;gap:3px;
 }
@@ -294,12 +297,12 @@ html.light .fx-card { box-shadow:0 4px 20px rgba(60,100,200,0.10),inset 0 1px 0 
 .fx-change.down { color:var(--red); }
 .fx-change.flat { color:var(--text-muted); }
 
-/* sparkline canvas */
-.fx-spark { width:100%;height:36px;margin-top:8px; }
+/* sparkline canvas — MUST have explicit height so Chart.js doesn't inflate the card */
+.fx-spark { width:100%;height:36px;min-height:36px;max-height:36px;margin-top:auto;padding-top:8px;flex-shrink:0;display:block; }
 
 /* big chart */
 .chart-wrap {
-  border-radius:20px;padding:20px;margin-bottom:16px;
+  border-radius:20px;padding:18px 16px 14px;margin-bottom:16px;
   background:var(--card-bg);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
   border:1px solid var(--card-border);
   box-shadow:0 4px 24px rgba(0,0,0,0.22),inset 0 1px 0 rgba(255,255,255,0.1);
@@ -315,8 +318,8 @@ html.light .chart-wrap { box-shadow:0 4px 24px rgba(60,100,200,0.10),inset 0 1px
 .chart-delta { font-size:13px;font-weight:600;margin-top:2px; }
 .chart-delta.up   { color:var(--green); }
 .chart-delta.down { color:var(--red); }
-.chart-canvas-wrap { position:relative;height:160px; }
-@media(min-width:600px) { .chart-canvas-wrap { height:200px; } }
+.chart-canvas-wrap { position:relative;height:160px;width:100%; }
+@media(min-width:600px) { .chart-canvas-wrap { height:190px; } }
 .chart-range { display:flex;gap:6px;margin-top:12px;justify-content:flex-end; }
 .range-btn { font-family:var(--font);font-size:11px;font-weight:600;padding:4px 10px;border-radius:8px;border:1px solid var(--chip-border);background:var(--chip-bg);color:var(--chip-color);cursor:pointer;transition:all 0.15s; }
 .range-btn.active { background:rgba(59,158,255,0.2);border-color:rgba(59,158,255,0.45);color:var(--accent); }
@@ -403,22 +406,24 @@ html.light .divider-row::before,html.light .divider-row::after { background:rgba
 .wx-main-card { border-radius:22px;padding:24px 22px 20px;margin-bottom:14px;background:var(--card-bg);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--card-border);box-shadow:0 6px 32px rgba(0,0,0,0.24),inset 0 1px 0 rgba(255,255,255,0.12);position:relative;overflow:hidden;animation:fadeUp 0.35s ease both; }
 html.light .wx-main-card { box-shadow:0 6px 32px rgba(60,100,200,0.12),inset 0 1px 0 rgba(255,255,255,0.9); }
 .wx-main-card::before { content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.45),transparent); }
-.wx-top { display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px; }
+.wx-top { display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;gap:12px; }
 .wx-city-name { font-size:20px;font-weight:700;color:var(--text);letter-spacing:-0.4px; }
 .wx-country { font-size:12px;color:var(--text-muted);margin-top:2px; }
-.wx-icon-wrap { font-size:48px;line-height:1; }
+.wx-icon-wrap { font-size:44px;line-height:1;flex-shrink:0; }
 .wx-temp-row { display:flex;align-items:flex-end;gap:12px;margin-bottom:8px; }
 .wx-temp { font-size:52px;font-weight:700;color:var(--text);letter-spacing:-3px;line-height:1; }
 .wx-temp-unit { font-size:20px;font-weight:400;color:var(--text-dim);margin-bottom:8px; }
 .wx-desc { font-size:14px;color:var(--text-dim);text-transform:capitalize;margin-bottom:16px; }
 .wx-stats-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:8px; }
+@media(max-width:380px) { .wx-stats-grid { grid-template-columns:repeat(2,1fr); } }
 .wx-stat { background:rgba(255,255,255,0.06);border-radius:12px;padding:10px 12px;border:1px solid rgba(255,255,255,0.08); }
 html.light .wx-stat { background:rgba(255,255,255,0.35);border-color:rgba(0,0,0,0.06); }
 .wx-stat-label { font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px; }
 .wx-stat-val { font-size:14px;font-weight:700;color:var(--text); }
 
 .wx-forecast-title { font-size:13px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;padding:0 4px; }
-.wx-forecast-row { display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin-bottom:16px; }
+.wx-forecast-row { display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:16px; }
+@media(max-width:480px) { .wx-forecast-row { grid-template-columns:repeat(4,1fr); } }
 .wx-day-card { border-radius:16px;padding:12px 10px;text-align:center;background:var(--card-bg);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--card-border);box-shadow:0 3px 14px rgba(0,0,0,0.15);animation:fadeUp 0.4s ease both;transition:all 0.2s; }
 html.light .wx-day-card { box-shadow:0 3px 14px rgba(60,100,200,0.09),inset 0 1px 0 rgba(255,255,255,0.8); }
 .wx-day-card:hover { transform:translateY(-2px);background:var(--card-hover); }
@@ -1020,7 +1025,7 @@ function renderFXGrid() {
     .map(([t,rate])=>({
       base, target:t, label:`${base}/${t}`, flag:'🌐',
       rate, prev: fxState.prevRates[t],
-      delta: fxState.prevRates[t] ? ((rate - fxState.prevRates[t]) / fxState.prevRates[t] * 100) : 0,
+      delta: (fxState.prevRates[t] && fxState.prevRates[t] !== rate) ? ((rate - fxState.prevRates[t]) / fxState.prevRates[t] * 100) : 0,
     }));
 
   const all = [...pairs, ...extraPairs];
@@ -1032,7 +1037,7 @@ function renderFXGrid() {
       <div class="fx-pair">${p.flag} ${p.label}</div>
       <div class="fx-rate">${fmtRate(p.rate, p.target)}</div>
       <div class="fx-change ${p.delta>0?'up':p.delta<0?'down':'flat'}">
-        ${p.delta>0?'▲':'▼'} ${Math.abs(p.delta).toFixed(3)}%
+        ${p.delta>0?'▲':p.delta<0?'▼':'—'} ${Math.abs(p.delta).toFixed(3)}%
       </div>
       <canvas class="fx-spark" id="spark-${p.target}"></canvas>
     </div>`).join('');
@@ -1069,6 +1074,9 @@ function drawSparkline(target, data, delta) {
   if (!canvas || !data.length) return;
   if (fxState.sparkCharts[target]) fxState.sparkCharts[target].destroy();
   const color = delta >= 0 ? '#34d399' : '#f87171';
+  // Lock canvas height before Chart.js touches it
+  canvas.style.height = '36px';
+  canvas.style.maxHeight = '36px';
   fxState.sparkCharts[target] = new Chart(canvas, {
     type: 'line',
     data: {
